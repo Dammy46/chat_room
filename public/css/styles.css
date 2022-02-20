@@ -32,8 +32,8 @@ a {
 .btn {
 	cursor: pointer;
 	padding: 5px 15px;
-	background: var(--light-color);
-	color: var(--dark-color-a);
+	background: none;
+	color: #fff;
 	border: 0;
 	font-size: 17px;
 }
@@ -41,14 +41,12 @@ a {
 /* Chat Page */
 
 .chat-container {
-	max-width: 1100px;
-	background: #fff;
-	margin: 30px auto;
-	overflow: hidden;
+    height: 500px;
+    border-radius: 15px !important;
+    background-color: rgba(0,0,0,0.4) !important;
 }
 
 .chat-header {
-	background: var(--dark-color-a);
 	color: #fff;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -89,6 +87,7 @@ a {
 	padding: 30px;
 	max-height: 500px;
 	overflow-y: scroll;
+    height: 22rem;
 }
 
 .chat-messages .message {
@@ -111,8 +110,10 @@ a {
 }
 
 .chat-form-container {
-	padding: 20px 30px;
-	background-color: var(--dark-color-a);
+    padding: 0.75rem 1.25rem;
+    background-color: rgb(0 0 0 / 21%);
+    padding-bottom: 20px;
+    border-radius: 1rem;
 }
 
 .chat-form-container form {
@@ -124,58 +125,125 @@ a {
 	padding: 5px;
 	height: 40px;
 	flex: 1;
+    color: #fff;
 }
 
 /* Join Page */
-.join-container {
-	max-width: 500px;
-	margin: 80px auto;
-	color: #fff;
+body{
+        background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -80px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
+.join{
+    height: 520px;
+    width: 400px;
+    background-color: rgba(0,0,0,0.4) !important;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+.join{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
 }
 
-.join-header {
-	text-align: center;
-	padding: 20px;
-	background: var(--dark-color-a);
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
 }
-
-.join-main {
-	padding: 30px 40px;
-	background: var(--dark-color-b);
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    border: none;
+    background: none;
+    outline: none;
+    transition: all .6s;
+        border-bottom: 2px solid #cfcfcf;
 }
-
-.join-main p {
-	margin-bottom: 20px;
+select{
+       display: block;
+    height: 50px;
+    width: 100%;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 17px;
+    font-weight: 300;
+        border: none;
+    border-bottom: 2px solid #cfcfcf;
+    background: none;
+    outline: none;
+    color: #fff;
 }
-
-.join-main .form-control {
-	margin-bottom: 20px;
+option{
+   color: black;
 }
-
-.join-main label {
-	display: block;
-	margin-bottom: 5px;
+::placeholder{
+    color: #e5e5e5;
 }
-
-.join-main input[type='text'] {
-	font-size: 16px;
-	padding: 5px;
-	height: 40px;
-	width: 100%;
-}
-
-.join-main select {
-	font-size: 16px;
-	padding: 5px;
-	height: 40px;
-	width: 100%;
-}
-
-.join-main .btn {
-	margin-top: 20px;
-	width: 100%;
+.sub-btn{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 @media (max-width: 700px) {
