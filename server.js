@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, "public")));
 //Runs when client connects
 io.on("connection", (socket) => {
   socket.on("joinRoom", ({ username, room }) => {
-    const user = userJoin(socket.ID, username, room);
+    const user = userJoin(socket.id, username, room);
 
     socket.join(user.room);
 
@@ -44,13 +44,13 @@ io.on("connection", (socket) => {
 
   // listen for chat message
   socket.on("chatMessage", function (msg) {
-    const user = getCurrentUser(socket.ID);
+    const user = getCurrentUser(socket.id);
     io.to(user.room).emit("message", formatMessage(user.username, msg));
   });
 
   //client disconnet
   socket.on("disconnect", function () {
-    const user = userLeave(socket.ID);
+    const user = userLeave(socket.id);
 
     if (user) {
       io.to(user.room).emit(
