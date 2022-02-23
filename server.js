@@ -3,7 +3,12 @@ const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
 const formatMessage = require("./package/messages.js");
-const { userJoin, getCurrentUser, userLeave, getUserRoom } = require("./package/users.js");
+const {
+  userJoin,
+  getCurrentUser,
+  userLeave,
+  getUserRoom,
+} = require("./package/users.js");
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
@@ -28,32 +33,41 @@ io.on("connection", (socket) => {
       .emit(
         "message",
         formatMessage(bot, `${user.username} has joined the chat`)
-    );
-    
-        //Display user and room info
+      );
+
+    //Display user and room info
     io.to(user.room).emit("usersRoom", {
       room: user.room,
-      users: getUserRoom(user.room)
-      })
+      users: getUserRoom(user.room),
+    });
   });
 
   // listen for chat message
   socket.on("chatMessage", function (msg) {
-    const user =getCurrentUser(socket.ID)
+    const user = getCurrentUser(socket.ID);
     io.to(user.room).emit("message", formatMessage(user.username, msg));
   });
 
   //client disconnet
   socket.on("disconnect", function () {
-    const user = userLeave(socket.ID)
+    const user = userLeave(socket.ID);
 
     if (user) {
-          io.to(user.room).emit("message", formatMessage(bot, `${user.username} has left the chat`));
+      io.to(user.room).emit(
+        "message",
+        formatMessage(bot, `${user.username} has left the chat`)
+      );
     }
-
   });
 });
 
-server.listen(3000 || process.env.PORT, function () {
-  console.log("server running on port 3000");
+// server.listen(3000 || process.env.PORT, function () {
+//   console.log("server running on port 3000");
+// });
+server.listen(process.env.PORT || 3000, function () {
+  console.log(
+    "Express server listening on port %d in %s mode",
+    this.address().port,
+    app.settings.env
+  );
 });
